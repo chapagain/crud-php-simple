@@ -26,7 +26,7 @@ if(isset($_POST['update']))
 		}		
 	} else {	
 		//updating the table
-		$result = mysql_query("UPDATE users SET name='$name',age='$age',email='$email' WHERE id=$id");
+		$result = mysqli_query($mysqli, "UPDATE users SET name='$name',age='$age',email='$email' WHERE id=$id");
 		
 		//redirectig to the display page. In our case, it is index.php
 		header("Location: index.php");
@@ -38,9 +38,9 @@ if(isset($_POST['update']))
 $id = $_GET['id'];
 
 //selecting data associated with this particular id
-$result = mysql_query("SELECT * FROM users WHERE id=$id");
+$result = mysqli_query($mysqli, "SELECT * FROM users WHERE id=$id");
 
-while($res = mysql_fetch_array($result))
+while($res = mysqli_fetch_array($result))
 {
 	$name = $res['name'];
 	$age = $res['age'];
