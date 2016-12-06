@@ -4,11 +4,12 @@ include_once("config.php");
 
 if(isset($_POST['update']))
 {	
-	$id = $_POST['id'];
+
+	$id = mysqli_real_escape_string($mysqli, $_POST['id']);
 	
-	$name=$_POST['name'];
-	$age=$_POST['age'];
-	$email=$_POST['email'];	
+	$name = mysqli_real_escape_string($mysqli, $_POST['name']);
+	$age = mysqli_real_escape_string($mysqli, $_POST['age']);
+	$email = mysqli_real_escape_string($mysqli, $_POST['email']);	
 	
 	// checking empty fields
 	if(empty($name) || empty($age) || empty($email)) {	
