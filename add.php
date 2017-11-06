@@ -41,6 +41,9 @@ if(isset($_POST['Submit'])) {
 		echo "<br/><a href='index.php'>View Result</a>";
 	}
 }
+
+
+
 ?>
 </body>
 </html>
