@@ -10,6 +10,7 @@ $result = mysqli_query($mysqli, "SELECT * FROM users ORDER BY id DESC"); // usin
 <html>
 <head>	
 	<title>Homepage</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1" />
 </head>
 
 <body>
