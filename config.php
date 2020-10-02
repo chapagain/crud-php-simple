@@ -18,6 +18,6 @@ $databaseName = 'test';
 $databaseUsername = 'root';
 $databasePassword = 'root';
 
-$mysqli = mysqli_connect($databaseHost, $databaseUsername, $databasePassword, $databaseName); 
+$mysqli = mysqli_connect($databaseHost, $databaseUsername, $databasePassword, $databaseName) or die("Database not connected !); 
  
 ?>
