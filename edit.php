@@ -61,18 +61,18 @@ while($res = mysqli_fetch_array($result))
 		<table border="0">
 			<tr> 
 				<td>Name</td>
-				<td><input type="text" name="name" value="<?php echo $name;?>"></td>
+				<td><input type="text" name="name" value="<?php echo htmlspecialchars($name, ENT_QUOTES);?>"></td>
 			</tr>
 			<tr> 
 				<td>Age</td>
-				<td><input type="text" name="age" value="<?php echo $age;?>"></td>
+				<td><input type="text" name="age" value="<?php echo htmlspecialchars($age, ENT_QUOTES);?>"></td>
 			</tr>
 			<tr> 
 				<td>Email</td>
-				<td><input type="text" name="email" value="<?php echo $email;?>"></td>
+				<td><input type="text" name="email" value="<?php echo htmlspecialchars($email, ENT_QUOTES);?>"></td>
 			</tr>
 			<tr>
-				<td><input type="hidden" name="id" value=<?php echo $_GET['id'];?>></td>
+				<td><input type="hidden" name="id" value=<?php echo htmlspecialchars($_GET['id'], ENT_QUOTES);?>></td>
 				<td><input type="submit" name="update" value="Update"></td>
 			</tr>
 		</table>
