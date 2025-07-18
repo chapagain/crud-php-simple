@@ -12,7 +12,7 @@ $result = mysqli_query($mysqli, "SELECT * FROM users ORDER BY id DESC");
 </head>
 
 <body>
-	<h2>Homepage</h2>
+	<h2>Homepage 1</h2>
 	<p>
 		<a href="add.php">Add New Data</a>
 	</p>
