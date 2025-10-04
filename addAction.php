@@ -30,15 +30,31 @@ if (isset($_POST['submit'])) {
 		
 		// Show link to the previous page
 		echo "<br/><a href='javascript:self.history.back();'>Go Back</a>";
+	} elseif (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
+		echo "<font color='red'>The email address '$email' is considered invalid.</font><br/>";
+
+		// Show link to the previous page
+		echo "<br/><a href='javascript:self.history.back();'>Go Back</a>";
 	} else { 
 		// If all the fields are filled (not empty) 
 
-		// Insert data into database
-		$result = mysqli_query($mysqli, "INSERT INTO users (`name`, `age`, `email`) VALUES ('$name', '$age', '$email')");
-		
-		// Display success message
-		echo "<p><font color='green'>Data added successfully!</p>";
-		echo "<a href='index.php'>View Result</a>";
+		try {
+			// Insert data into database
+			$result = mysqli_query($mysqli, "INSERT INTO users (`name`, `age`, `email`) VALUES ('$name', '$age', '$email')");
+
+			// Kalau query berhasil, tampilkan success message
+			if ($result) {
+				echo "<p><font color='green'>Data added successfully!</font></p>";
+				echo "<a href='index.php'>View Result</a>";
+			}
+
+		} catch (mysqli_sql_exception $e) {
+			if ($e->getCode() == 1062) { // 1062 = Duplicate entry
+				echo "Email must be unique.";
+				echo "<br/><a href='javascript:self.history.back();'>Go Back</a>";
+			}
+		}
+
 	}
 }
 ?>

@@ -22,12 +22,32 @@ if (isset($_POST['update'])) {
 		if (empty($email)) {
 			echo "<font color='red'>Email field is empty.</font><br/>";
 		}
+
+		// Show link to the previous page
+		echo "<br/><a href='javascript:self.history.back();'>Go Back</a>";
+	} elseif (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
+		echo "<font color='red'>The email address '$email' is considered invalid.</font><br/>";
+
+		// Show link to the previous page
+		echo "<br/><a href='javascript:self.history.back();'>Go Back</a>";
 	} else {
-		// Update the database table
-		$result = mysqli_query($mysqli, "UPDATE users SET `name` = '$name', `age` = '$age', `email` = '$email' WHERE `id` = $id");
-		
-		// Display success message
-		echo "<p><font color='green'>Data updated successfully!</p>";
-		echo "<a href='index.php'>View Result</a>";
+
+		try {
+			// Update the database table
+			$result = mysqli_query($mysqli, "UPDATE users SET `name` = '$name', `age` = '$age', `email` = '$email' WHERE `id` = $id");
+
+			// Kalau query berhasil, tampilkan success message
+			if ($result) {
+				// Display success message
+				echo "<p><font color='green'>Data updated successfully!</p>";
+				echo "<a href='index.php'>View Result</a>";
+			}
+
+		} catch (mysqli_sql_exception $e) {
+			if ($e->getCode() == 1062) { // 1062 = Duplicate entry
+				echo "Email must be unique.";
+				echo "<br/><a href='javascript:self.history.back();'>Go Back</a>";
+			}
+		}
 	}
 }
