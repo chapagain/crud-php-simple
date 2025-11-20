@@ -4,7 +4,7 @@
 </head>
 
 <body>
-	<h2>Add Data</h2>
+	<h2>Add Data 1</h2>
 	<p>
 		<a href="index.php">Home</a>
 	</p>
