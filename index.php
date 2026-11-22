@@ -1,5 +1,5 @@
 <?php
-// Include the database connection file
+// Include database connection file for CRUD application
 require_once("dbConnection.php");
 
 // Fetch data in descending order (lastest entry first)
