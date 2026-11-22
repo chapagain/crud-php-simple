@@ -1,5 +1,5 @@
 <?php
-// Include database connection file for CRUD application
+// Database connection for CRUD application - branch belajar
 require_once("dbConnection.php");
 
 // Fetch data in descending order (lastest entry first)
